@@ -175,7 +175,8 @@ main {
 
 /*------------------------------------Components-----------------------------------------------------*/
 .btn,
-.btn-gradient {
+.btn-gradient,
+.btn-grey {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -194,7 +195,8 @@ main {
 }
 @media (max-width: 600px) {
   .btn,
-  .btn-gradient {
+  .btn-gradient,
+  .btn-grey {
     padding: 8px 20px;
   }
 }
@@ -212,6 +214,13 @@ main {
 
 .btn-gradient {
   background: linear-gradient(131.19deg, rgb(248, 94, 118) 0.853%, rgb(163, 36, 176) 21.993%, rgb(120, 7, 205) 45.503%, rgb(81, 79, 216) 74.136%, rgb(43, 174, 223) 103.716%);
+}
+
+.btn-grey {
+  padding: 11px 40px 13px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.1);
+  min-width: 200px;
 }
 
 .title {
@@ -503,11 +512,13 @@ main {
   width: 100%;
   height: auto;
   opacity: 0.5;
-  animation: kenburns-top-right 30s linear both infinite;
+  overflow: hidden;
 }
 .main__image img {
+  display: inline-block;
   width: 100%;
   height: 100%;
+  animation: kenburns-top-right 30s linear both infinite;
   object-fit: cover;
 }
 
@@ -816,7 +827,6 @@ main {
 @media (max-width: 767px) {
   .interface__cards {
     grid-template-areas: "card1 card1 " "card2 card2 " "card4 card5 " "card3 card3 " "card6 card6 ";
-    gap: 5px;
   }
 }
 .interface__card {
@@ -944,7 +954,8 @@ main {
 .interface__card-text {
   font-size: 14px;
   font-weight: 400;
-  line-height: 135.714286%;
+  line-height: 160%;
+  max-width: 90%;
 }
 .interface__card-decore {
   position: absolute;
@@ -1182,5 +1193,140 @@ main {
     height: 400px;
     transform: translateX(-30%);
     filter: blur(150px);
+  }
+}
+
+/*------------------------------Community---------------------------*/
+.community {
+  position: relative;
+  overflow: hidden;
+}
+.community__body {
+  padding: 100px 0 160px;
+  position: relative;
+  z-index: 2;
+}
+@media (max-width: 767px) {
+  .community__body {
+    padding: 60px 0;
+  }
+}
+.community__title {
+  margin-bottom: 20px;
+}
+@media (max-width: 767px) {
+  .community__title {
+    text-wrap: balance;
+  }
+}
+.community__subtitle {
+  margin-bottom: 74px;
+}
+@media (max-width: 767px) {
+  .community__subtitle {
+    margin-bottom: 40px;
+  }
+}
+.community__items {
+  display: grid;
+  grid-template-columns: 280px 280px;
+  gap: 40px 127px;
+  margin-bottom: 40px;
+}
+@media (max-width: 980px) {
+  .community__items {
+    gap: 40px 60px;
+  }
+}
+@media (max-width: 767px) {
+  .community__items {
+    grid-template-columns: 70%;
+    gap: 40px;
+  }
+}
+.community__item-head {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 135%;
+  margin-bottom: 20px;
+}
+@media (max-width: 767px) {
+  .community__item-head {
+    margin-bottom: 10px;
+    font-size: 18px;
+    gap: 12px;
+  }
+  .community__item-head br {
+    display: none;
+  }
+}
+.community__item-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(131.19deg, rgb(248, 94, 118) 3.025%, rgb(163, 36, 176) 22.986%, rgb(120, 7, 205) 45.185%, rgb(81, 79, 216) 72.222%, rgb(43, 174, 223) 100.153%);
+}
+@media (max-width: 767px) {
+  .community__item-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+.community__item-decr {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 135.714286%;
+}
+@media (max-width: 767px) {
+  .community__item-decr {
+    text-wrap: balance;
+  }
+}
+.community__button .btn-grey {
+  width: 245px;
+}
+@media (max-width: 600px) {
+  .community__button .btn-grey {
+    width: 100%;
+  }
+}
+
+.globe {
+  position: absolute;
+  top: 10%;
+  right: 0;
+  height: 80%;
+  width: auto;
+  transform: translateX(20%);
+}
+.globe img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+@media (max-width: 1500px) {
+  .globe {
+    transform: translateX(40%);
+  }
+}
+@media (max-width: 1300px) {
+  .globe {
+    transform: translateX(60%);
+  }
+}
+@media (max-width: 980px) {
+  .globe {
+    transform: translateX(70%);
+  }
+}
+@media (max-width: 767px) {
+  .globe {
+    width: 150vw;
   }
 }
