@@ -4,16 +4,80 @@
    <meta charset="UTF-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/style.min.css">
    <title>Главная</title>
 </head>
 
 <body>
    <div class="wrapper">
-      <header>
-   <h1>hello GULP</h1>
+      <header class="header">
+   <div class="header__body container">
+
+      <div class="header__logo">
+         <a href="index.html" aria-label="Home page"><img src="img/logo.svg" width="165" height="46" alt="Logo"></a>
+      </div>
+
+      <div class="header__menu menu">
+         <div class="menu__icon"></div>
+         <div class="menu__body">
+            <ul>
+               <li><a href="">Interface</a></li>
+               <li><a href="">Price Comparison</a></li>
+               <li><a href="">Community</a></li>
+               <li><a href="">FAQ</a></li>
+            </ul>
+         </div>
+      </div>
+
+      <div class="header__buttons">
+         <button type="button" class="header__button btn">Sign in</button>
+         <button type="button" class="header__button btn-gradient">Sign up</button>
+      </div>
+   </div>
 </header>
       <main>
+         <div class="main__image">
+            <img src="img/hero.png" alt="">
+         </div>
+         <section class="hero">
+            <div class="hero__body container">
+               <div class="hero__text">
+                  <div class="hero__subtitle">1 service. 100 tasks. 10x productivity</div>
+                  <h1 class="hero__title">Top AI tools for<br> business, creativity,<br> and automation</h1>
+                  <div class="hero__users">
+                     <div class="hero__user">
+                        <img src="img/users/user-1.png" width="67" height="67" alt="User">
+                     </div>
+                     <div class="hero__user">
+                        <img src="img/users/user-2.png" width="67" height="67" alt="User">
+                     </div>
+                     <div class="hero__user">
+                        <img src="img/users/user-3.png" width="67" height="67" alt="User">
+                     </div>
+                     <div class="hero__user">
+                        <img src="img/users/user-4.png" width="67" height="67" alt="User">
+                     </div>
+                     <div class="hero__user">
+                        <img src="img/users/user-5.png" width="67" height="67" alt="User">
+                     </div>
+                     <div class="hero__user-text">
+                        <span>+25K</span>
+                        active users
+                     </div>
+                  </div>
+                  <div class="hero__description">
+                     Connect to powerful AI tools with no hassle. Everything you need — right here.
+                  </div>
+                  <div class="hero__button">
+                     <a href="" class="btn-gradient">Get Access</a>
+                  </div>
+
+               </div>
+               <div class="hero__screen">
+                  <img src="img/screen.png" alt="">
+               </div>
+            </div>
+         </section>
       </main>
       <footer></footer>
    </div>
