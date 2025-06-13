@@ -143,14 +143,36 @@ __webpack_require__.r(__webpack_exports__);
 
 _modules_functions_js__WEBPACK_IMPORTED_MODULE_0__.isWebp();
 
-//сюда же можно импортировать и другие модули, например swiper:
-/* import Swiper, { Navigation, Pagination } from 'swiper'; */
+/*------------------------------
+      Brands carousel   
+      ---------------------------*/
+const brandsSlider = document.querySelector(".marquee__slider");
 
-/* const swiper = new Swiper('.swiper', {
-   // configure Swiper to use modules
-   modules: [Navigation, Pagination],
-   ...
- }); */
+if (brandsSlider) {
+   const brandsSwiper = new Swiper(brandsSlider, {
+      slidesPerView: "auto",
+      loop: true,
+      freeMode: true,
+      simulateTouch: false,
+      slideToClickedSlide: false,
+      speed: 4000,
+      autoplay: {
+         delay: 0,
+         disableOnInteraction: false,
+      },
+      breakpoints: {
+         320: {
+            spaceBetween: 16,
+         },
+         768: {
+            spaceBetween: 30,
+         },
+         981: {
+            spaceBetween: 90,
+         }
+      }
+   });
+}
 })();
 
 /******/ })()
