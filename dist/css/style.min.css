@@ -816,6 +816,7 @@ main {
 @media (max-width: 767px) {
   .interface__cards {
     grid-template-areas: "card1 card1 " "card2 card2 " "card4 card5 " "card3 card3 " "card6 card6 ";
+    gap: 5px;
   }
 }
 .interface__card {
@@ -879,6 +880,7 @@ main {
   .interface__card {
     padding: 28px 20px;
     border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
   }
   .interface__card:nth-child(1) {
     min-height: unset;
@@ -901,6 +903,7 @@ main {
     border-radius: 100px;
     font-size: 16px;
     line-height: 133.333333%;
+    border: none;
   }
 }
 .interface__card-media {
