@@ -173,6 +173,36 @@ if (brandsSlider) {
       }
    });
 }
+
+
+/*------------------------------
+     faq
+     ---------------------------*/
+document.addEventListener("DOMContentLoaded", () => {
+   const faqQuestions = document.querySelectorAll(".faq__question");
+
+   faqQuestions.forEach((question) => {
+      question.addEventListener("click", () => {
+         const faqItem = question.parentElement;
+         const faqAnswer = faqItem.querySelector(".faq__answer");
+         document.querySelectorAll(".faq__item").forEach((item) => {
+            if (item !== faqItem) {
+               item.classList.remove("active");
+               const answer = item.querySelector(".faq__answer");
+               answer.style.maxHeight = null;
+            }
+         });
+
+         if (faqItem.classList.contains("active")) {
+            faqItem.classList.remove("active");
+            faqAnswer.style.maxHeight = null;
+         } else {
+            faqItem.classList.add("active");
+            faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 30 + "px";
+         }
+      });
+   });
+});
 })();
 
 /******/ })()
