@@ -7,6 +7,10 @@
   scrollbar-color: rgba(120, 7, 205, 0.4) #05010d;
   scrollbar-width: thin;
 }
+* ::selection {
+  background: #7001d3;
+  color: #ffffff;
+}
 *::-webkit-scrollbar-thumb {
   background-color: rgba(120, 7, 205, 0);
 }
@@ -213,7 +217,14 @@ main {
 }
 
 .btn-gradient {
-  background: linear-gradient(131.19deg, rgb(248, 94, 118) 0.853%, rgb(163, 36, 176) 21.993%, rgb(120, 7, 205) 45.503%, rgb(81, 79, 216) 74.136%, rgb(43, 174, 223) 103.716%);
+  background-image: linear-gradient(131.19deg, rgb(248, 94, 118) 0.853%, rgb(163, 36, 176) 21.993%, rgb(120, 7, 205) 45.503%, rgb(81, 79, 216) 74.136%, rgb(43, 174, 223) 103.716%);
+  background-size: 100% auto;
+  background-position: left center;
+}
+@media (hover: hover) {
+  .btn-gradient:hover {
+    background-size: 400% auto;
+  }
 }
 
 .btn-grey {
@@ -221,6 +232,12 @@ main {
   border: 1px solid rgba(255, 255, 255, 0.3);
   background: rgba(255, 255, 255, 0.1);
   min-width: 200px;
+}
+@media (hover: hover) {
+  .btn-grey:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: #fff;
+  }
 }
 
 .title {
@@ -262,7 +279,6 @@ main {
 
 /*------------------------------------Header-----------------------------------------------------*/
 .header {
-  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -464,6 +480,7 @@ main {
   align-items: center;
 }
 .menu ul a {
+  display: inline-block;
   padding: 4px 12px;
   color: rgb(255, 255, 255);
   font-family: Manrope;
@@ -472,14 +489,12 @@ main {
   line-height: 133.333333%;
   letter-spacing: 0.03em;
   transition: all 0.3s ease 0s;
+  will-change: transform;
 }
 @media (hover: hover) {
   .menu ul a:hover {
-    border-radius: 100px;
-    background: linear-gradient(131.19deg, rgb(248, 94, 118) 0.853%, rgb(163, 36, 176) 21.993%, rgb(120, 7, 205) 45.503%, rgb(81, 79, 216) 74.136%, rgb(43, 174, 223) 103.716%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    color: #c787ff;
+    transform: translateY(-2px);
   }
 }
 @media (max-width: 980px) {
@@ -520,6 +535,11 @@ main {
   height: 100%;
   animation: kenburns-top-right 30s linear both infinite;
   object-fit: cover;
+}
+@media (max-width: 767px) {
+  .main__image img {
+    animation: none;
+  }
 }
 
 @keyframes kenburns-top-right {
@@ -874,12 +894,20 @@ main {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background: linear-gradient(131.19deg, rgb(248, 94, 118) 0.843%, rgb(163, 36, 176) 21.988%, rgb(120, 7, 205) 45.504%, rgb(81, 79, 216) 74.145%, rgb(43, 174, 223) 103.733%);
+  transition: all 0.3s ease 0s;
   color: rgb(255, 255, 255);
   font-family: Manrope;
   font-size: 16px;
   font-weight: 500;
   line-height: 142.4375%;
+  background-image: linear-gradient(131.19deg, rgb(248, 94, 118) 0.853%, rgb(163, 36, 176) 21.993%, rgb(120, 7, 205) 45.503%, rgb(81, 79, 216) 74.136%, rgb(43, 174, 223) 103.716%);
+  background-size: 100% auto;
+  background-position: left center;
+}
+@media (hover: hover) {
+  .interface__card:nth-child(6):hover {
+    background-size: 400% auto;
+  }
 }
 @media (max-width: 1200px) {
   .interface__card:nth-child(3), .interface__card:nth-child(5) {
@@ -1360,6 +1388,7 @@ main {
 }
 .faq__item {
   border-bottom: 1px solid rgba(134, 1, 211, 0.5);
+  transition: border-color 0.3s ease 0s;
 }
 .faq__item.active .faq__answer {
   padding-bottom: 30px;
@@ -1368,6 +1397,11 @@ main {
 .faq__item.active .faq__question-arrow {
   transform: scaleY(-1);
   color: #7001d3;
+}
+@media (hover: hover) {
+  .faq__item:hover {
+    border-color: #7001d3;
+  }
 }
 .faq__question {
   display: flex;
@@ -1549,6 +1583,13 @@ main {
   font-size: 16px;
   font-weight: 500;
 }
+@media (hover: hover) {
+  .offer__card-button .btn-grey:hover {
+    border: 1px solid rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.1);
+    color: #fff;
+  }
+}
 @media (max-width: 980px) {
   .offer__card-button .btn-grey {
     font-size: 14px;
@@ -1634,6 +1675,20 @@ Request
   border-radius: 10px;
   background: rgb(255, 255, 255);
   padding: 10px 20px;
+  transition: all 0.3s ease 0s;
+  border: 1px solid transparent;
+}
+.request__form-area input:user-invalid {
+  border-color: red;
+  border-width: 2px;
+}
+.request__form-area input:focus {
+  border: 1px solid rgb(163, 36, 176);
+}
+@media (hover: hover) {
+  .request__form-area input:hover {
+    border: 1px solid rgb(163, 36, 176);
+  }
 }
 .request__form-submit {
   margin-top: 34px;
@@ -1680,6 +1735,11 @@ Aggit
   background: linear-gradient(240deg, rgba(217, 217, 217, 0.34) -105.937%, rgba(5, 1, 13, 0.57) 88.883%);
   position: relative;
   z-index: 5;
+}
+@media (max-width: 767px) {
+  .agitation {
+    margin-top: 60px;
+  }
 }
 .agitation__body {
   text-align: center;
@@ -1827,6 +1887,12 @@ Footer
   font-size: 12px;
   font-weight: 400;
   line-height: 133.333333%;
+  transition: all 0.3s ease 0s;
+}
+@media (hover: hover) {
+  .footer__menu a:hover {
+    color: #7001d3;
+  }
 }
 .footer__subscribe {
   width: 100%;
@@ -1851,9 +1917,22 @@ Footer
   font-size: 14px;
   font-weight: 400;
   line-height: 135.714286%;
+  transition: all 0.3s ease 0s;
+  border: 1px solid transparent;
 }
 .footer__subscribe-form input::placeholder {
   color: rgba(255, 255, 255, 0.5);
+}
+.footer__subscribe-form input:user-invalid {
+  border-color: red;
+}
+.footer__subscribe-form input:focus {
+  border: 1px solid rgb(163, 36, 176);
+}
+@media (hover: hover) {
+  .footer__subscribe-form input:hover {
+    border: 1px solid rgb(163, 36, 176);
+  }
 }
 .footer__subscribe-form button {
   width: 50%;
@@ -1867,6 +1946,13 @@ Footer
   font-size: 14px;
   font-weight: 400;
   line-height: 135.714286%;
+  transition: all 0.3s ease 0s;
+}
+@media (hover: hover) {
+  .footer__subscribe-form button:hover {
+    border: 0.74px solid rgb(255, 255, 255);
+    background: rgba(255, 255, 255, 0.1);
+  }
 }
 @media (max-width: 980px) {
   .footer__subscribe-form {
