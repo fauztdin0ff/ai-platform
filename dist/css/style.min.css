@@ -1977,3 +1977,300 @@ Footer
   line-height: 114.285714%;
   margin-bottom: 9px;
 }
+
+/*------------------------------Popups---------------------------*/
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: center;
+  padding: 30px;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+}
+.popup.opened {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+}
+.popup.opened .popup__body {
+  transform: translateY(0);
+}
+.popup__body {
+  width: min(100% - 30px, 385px);
+  margin-inline: auto;
+  position: relative;
+  padding: 56px 26px;
+  border-radius: 10px;
+  background: rgb(5, 1, 13);
+  overflow: hidden;
+  color: rgb(255, 255, 255);
+  transform: translateY(-50px);
+  font-family: Manrope;
+  transition: all 0.4s cubic-bezier(0.075, 0.82, 0.165, 1) 0s;
+}
+.popup__body-title {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 137.5%;
+  text-align: center;
+  margin-bottom: 12px;
+  position: relative;
+  z-index: 2;
+}
+.popup__body-subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 137.5%;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  text-wrap: balance;
+  margin: 0 auto 30px auto;
+}
+.popup__body-form {
+  position: relative;
+  z-index: 2;
+}
+.popup__body-form .btn-gradient {
+  margin-top: 35px;
+  border-radius: 5px;
+  width: 100%;
+}
+.popup__body-att {
+  font-size: 10px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 8px;
+}
+.popup__body-form-area {
+  margin-bottom: 15px;
+  width: 100%;
+  position: relative;
+}
+.popup__body-form-area input {
+  border: 0.7px solid rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 6px 10px;
+  width: 100%;
+  color: rgb(255, 255, 255);
+  font-family: Manrope;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 200%;
+}
+.popup__body-form-area input::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+.popup__body-form-help {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  transform: translateY(-8px);
+}
+.popup__body-form-help a {
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+}
+@media (hover: hover) {
+  .popup__body-form-help a:hover {
+    text-decoration: underline;
+  }
+}
+.popup__body-form-help label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: rgba(255, 255, 255, 0.4);
+  font-size: 12px;
+  cursor: pointer;
+}
+.popup__body-form-help label span {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  position: relative;
+  border: 0.7px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+.popup__body-form-help label span::after {
+  content: "";
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(../img/icons/check2.svg);
+  background-repeat: no-repeat;
+  background-size: 14px 14px;
+  background-position: center center;
+  transition: all 0.2s ease 0s;
+  opacity: 0;
+}
+.popup__body-form-help label input {
+  display: none;
+}
+.popup__body-form-help label input:checked + span::after {
+  opacity: 1;
+}
+.popup__body-close {
+  position: absolute;
+  top: 10px;
+  right: 6px;
+  width: 40px;
+  height: 40px;
+  z-index: 5;
+  cursor: pointer;
+  transform-origin: center;
+}
+.popup__body-close img {
+  display: inline-block;
+  width: 30px;
+  transition: all 0.3s ease 0s;
+  height: 30px;
+}
+@media (hover: hover) {
+  .popup__body-close:hover img {
+    transform: rotate(-90deg);
+  }
+}
+.popup__blur {
+  position: absolute;
+  width: 520px;
+  height: auto;
+  aspect-ratio: 1/1;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  filter: blur(208.44px);
+  background: linear-gradient(131.19deg, rgb(248, 94, 118) 3.025%, rgb(163, 36, 176) 22.986%, rgb(120, 7, 205) 45.185%, rgb(81, 79, 216) 72.222%, rgb(43, 174, 223) 100.153%);
+  opacity: 0.8;
+}
+
+.login-popup__icon {
+  width: 40px;
+  height: 40px;
+  margin-inline: auto;
+  border: 0.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 32px;
+}
+.login-popup__icon img {
+  width: 18px;
+  height: 18px;
+}
+
+.password-eye {
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  transform: translateY(-50%);
+  z-index: 2;
+  cursor: pointer;
+}
+@media (hover: hover) {
+  .password-eye:hover svg {
+    color: #c787ff;
+  }
+}
+
+.password-eye-open,
+.password-eye-close {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.password-eye-open svg,
+.password-eye-close svg {
+  width: 16px;
+  height: 16px;
+  transition: all 0.3s ease 0s;
+}
+
+.password-eye-close {
+  display: none;
+}
+
+.popup__aside {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  position: relative;
+  padding: 42px;
+  flex: 0 1 40%;
+}
+.popup__aside-title {
+  font-size: 26px;
+  position: relative;
+  z-index: 2;
+}
+.popup__aside-subtitle {
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+  text-wrap: balance;
+}
+.popup__aside-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.popup__aside-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 0 100%;
+}
+.popup__main {
+  flex: 0 1 60%;
+  width: 100%;
+  padding: 68px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.registration-popup__body {
+  padding: 0;
+  display: flex;
+  width: min(100% - 30px, 700px);
+}
+.registration-popup .popup__blur {
+  width: 416px;
+  height: 416px;
+  bottom: 0;
+  right: 0;
+  left: unset;
+  top: unset;
+  transform: translate(26%, 53%);
+  border: 1px solid red;
+}
+.registration-popup .popup__body-title {
+  margin-bottom: 28px;
+}
+.registration-popup .popup__body-password-att {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: -10px;
+}

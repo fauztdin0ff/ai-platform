@@ -176,32 +176,108 @@ if (brandsSlider) {
 
 
 /*------------------------------
-     faq
-     ---------------------------*/
+faq
+---------------------------*/
 document.addEventListener("DOMContentLoaded", () => {
    const faqQuestions = document.querySelectorAll(".faq__question");
 
-   faqQuestions.forEach((question) => {
-      question.addEventListener("click", () => {
-         const faqItem = question.parentElement;
-         const faqAnswer = faqItem.querySelector(".faq__answer");
-         document.querySelectorAll(".faq__item").forEach((item) => {
-            if (item !== faqItem) {
-               item.classList.remove("active");
-               const answer = item.querySelector(".faq__answer");
-               answer.style.maxHeight = null;
+   if (faqQuestions.length > 0) {
+      faqQuestions.forEach((question) => {
+         question.addEventListener("click", () => {
+            const faqItem = question.parentElement;
+            if (!faqItem) return;
+
+            const faqAnswer = faqItem.querySelector(".faq__answer");
+            if (!faqAnswer) return;
+
+            const allItems = document.querySelectorAll(".faq__item");
+            allItems.forEach((item) => {
+               if (item !== faqItem) {
+                  item.classList.remove("active");
+
+                  const answer = item.querySelector(".faq__answer");
+                  if (answer) {
+                     answer.style.maxHeight = null;
+                  }
+               }
+            });
+
+            const isActive = faqItem.classList.contains("active");
+            faqItem.classList.toggle("active");
+
+            if (isActive) {
+               faqAnswer.style.maxHeight = null;
+            } else {
+               faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 30 + "px";
             }
          });
+      });
+   }
+});
 
-         if (faqItem.classList.contains("active")) {
-            faqItem.classList.remove("active");
-            faqAnswer.style.maxHeight = null;
-         } else {
-            faqItem.classList.add("active");
-            faqAnswer.style.maxHeight = faqAnswer.scrollHeight + 30 + "px";
+
+
+/* ------------------------------Popups---------------------------*/
+document.addEventListener("DOMContentLoaded", () => {
+   const openButtons = document.querySelectorAll(".open-popup");
+   const closeButtons = document.querySelectorAll(".popup-close");
+   const popups = document.querySelectorAll(".popup");
+
+   openButtons.forEach(button => {
+      button.addEventListener("click", () => {
+         const popupName = button.getAttribute("data-popup");
+         const targetPopup = document.querySelector(`.popup[data-popup="${popupName}"]`);
+
+         if (targetPopup) {
+            targetPopup.classList.add("opened");
+            document.body.classList.add("popup-open");
          }
       });
    });
+
+   closeButtons.forEach(button => {
+      button.addEventListener("click", (e) => {
+         const popup = button.closest(".popup");
+         if (popup) {
+            popup.classList.remove("opened");
+            document.body.classList.remove("popup-open");
+         }
+      });
+   });
+
+   popups.forEach(popup => {
+      popup.addEventListener("click", (e) => {
+         if (e.target === popup) {
+            popup.classList.remove("opened");
+            document.body.classList.remove("popup-open");
+         }
+      });
+   });
+});
+
+/*------------------------------
+Open password
+---------------------------*/
+document.addEventListener("DOMContentLoaded", () => {
+   const areas = document.querySelectorAll(".popup__body-form-area");
+
+   if (areas.length > 0) {
+      areas.forEach(area => {
+         const input = area.querySelector(".password-input");
+         const toggle = area.querySelector(".password-eye");
+         const openEye = toggle?.querySelector(".password-eye-open");
+         const closeEye = toggle?.querySelector(".password-eye-close");
+
+         if (input && toggle && openEye && closeEye) {
+            toggle.addEventListener("click", () => {
+               const isVisible = input.type === "text";
+               input.type = isVisible ? "password" : "text";
+               openEye.style.display = isVisible ? "flex" : "none";
+               closeEye.style.display = isVisible ? "none" : "flex";
+            });
+         }
+      });
+   }
 });
 })();
 
