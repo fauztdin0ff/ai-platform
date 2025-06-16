@@ -279,6 +279,109 @@ document.addEventListener("DOMContentLoaded", () => {
       });
    }
 });
+
+
+/*------------------------------
+textarea chat
+---------------------------*/
+const textarea = document.getElementById('autoResize');
+const sendButton = document.querySelector('.app__main-control-send');
+
+if (textarea && sendButton) {
+   textarea.addEventListener('input', () => {
+      textarea.style.height = 'auto';
+      const maxHeight = 172;
+      textarea.style.height = Math.min(textarea.scrollHeight, maxHeight) + 'px';
+
+      if (textarea.value.trim() !== '') {
+         sendButton.style.display = 'flex';
+      } else {
+         sendButton.style.display = 'none';
+      }
+   });
+}
+
+
+/*------------------------------
+Tips
+---------------------------*/
+function handleTips() {
+   document.querySelectorAll('.with-tips').forEach(item => {
+      const tip = item.querySelector('.tips-item');
+
+      if (window.innerWidth < 1023) {
+         // Удаляем предыдущие события
+         item.onmouseenter = null;
+         item.onmouseleave = null;
+
+         item.addEventListener('click', () => {
+            tip.classList.add('show');
+
+            setTimeout(() => {
+               tip.classList.remove('show');
+            }, 2000);
+         });
+      } else {
+         item.onclick = null;
+
+         item.addEventListener('mouseenter', () => {
+            tip.classList.add('show');
+         });
+
+         item.addEventListener('mouseleave', () => {
+            tip.classList.remove('show');
+         });
+      }
+   });
+}
+
+handleTips();
+
+window.addEventListener('resize', () => {
+   handleTips();
+});
+
+
+/*------------------------------
+Open body
+---------------------------*/
+document.addEventListener('DOMContentLoaded', () => {
+   const toggleBtn = document.querySelector('.app__aside-toggle');
+   const asideBody = document.querySelector('.app__aside-body');
+   const closeBtn = document.querySelector('.app__aside-body-close');
+   const body = document.body;
+
+   // Проверка, есть ли нужные элементы
+   if (!toggleBtn || !asideBody || !body) return;
+
+   // Открыть меню
+   toggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      asideBody.classList.add('opened');
+      body.classList.add('blocked');
+   });
+
+   // Закрыть меню (по кнопке), если кнопка есть
+   if (closeBtn) {
+      closeBtn.addEventListener('click', () => {
+         asideBody.classList.remove('opened');
+         body.classList.remove('blocked');
+      });
+   }
+
+   // Закрыть меню (по клику вне блока)
+   document.addEventListener('click', (e) => {
+      const isOpened = asideBody.classList.contains('opened');
+      const clickedOutside = !asideBody.contains(e.target) && !toggleBtn.contains(e.target);
+
+      if (isOpened && clickedOutside) {
+         asideBody.classList.remove('opened');
+         body.classList.remove('blocked');
+      }
+   });
+});
+
+
 })();
 
 /******/ })()

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta name="msapplication-TileColor" content="#05010d">
+   <meta name="theme-color" content="#05010d">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250616130207" />
+   <link rel="stylesheet" href="css/style.min.css?_v=20250616130207">
+   <title>Главная</title>
+</head>
+
+<body>
+   <div class="wrapper">
+      <main>
+         <div class="app">
+            <div class="app__container">
+               <div class="app__aside">
+                  <div class="app__aside-head">
+                     <a href="index.html" class="app__aside-logo">
+                        <img src="img/logo-icon.svg" width="24" height="24" alt="logo">
+                     </a>
+                     <button type="button" class="app__main-upgrade">
+                        Upgrade PRO
+                        <img src="img/icons/lighthing.svg" width="10" height="16" alt="lighthing">
+                     </button>
+                     <div class="app__aside-toggle">
+                        <img src="img/icons/list.svg" alt="">
+                     </div>
+                  </div>
+
+                  <div class="app__aside-body">
+                     <div class="app__aside-body-logo">
+                        <img src="img/logo-icon.svg" width="24" height="24" alt="logo">
+                     </div>
+                     <div class="app__aside-ai">
+                        <ul class="app__aside-ai-list">
+                           <li>
+                              <a href="" class="app__aside-ai-link active">
+                                 <img src="img/ai-logos/ChatGPT.svg" width="20" height="20" alt="ChatGPT logo">
+                                 <span>ChatGPT</span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="" class="app__aside-ai-link">
+                                 <img src="img/ai-logos/claude.svg" width="20" height="20" alt="Claude logo">
+                                 <span>Claude</span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="" class="app__aside-ai-link">
+                                 <img src="img/ai-logos/Gemini.svg" width="20" height="20" alt="Gemini logo">
+                                 <span>Gemini</span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="" class="app__aside-ai-link">
+                                 <img src="img/ai-logos/Meta.svg" width="20" height="20" alt="LLaMA logo">
+                                 <span>LLaMA</span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="" class="app__aside-ai-link">
+                                 <img src="img/ai-logos/ChatGPT.svg" width="20" height="20" alt="DALL·E logo">
+                                 <span>DALL·E</span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="" class="app__aside-ai-link">
+                                 <img src="img/ai-logos/DeepSeek.svg" width="20" height="20" alt="DeepSeek logo">
+                                 <span>DeepSeek</span>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="" class="app__aside-ai-link">
+                                 <img src="img/ai-logos/Midjourney.svg" width="20" height="20" alt="Midjourney logo">
+                                 <span>Midjourney</span>
+                              </a>
+                           </li>
+
+                        </ul>
+                     </div>
+
+                     <div class="app__aside-footer">
+                        <button type="button" class="app__aside-user">
+                           <div class="app__aside-user-icon">
+                              <img src="img/icons/user.svg" width="18" height="18" alt="user icon">
+                           </div>
+                           <div class="app__aside-user-name">Account</div>
+                        </button>
+                        <button class="app__aside-settings">
+                           <div class="app__aside-settings-icon">
+                              <img src="img/icons/settings.svg" width="18" height="18" alt="settings icon">
+                           </div>
+                           <div class="app__aside-settings-name">Settings</div>
+                        </button>
+                     </div>
+                     <div class="app__aside-body-close">
+                        <img src="img/icons/x.svg" alt="">
+                     </div>
+                     <div class="app__aside-body-blur"></div>
+                  </div>
+
+               </div>
+
+               <div class="app__main">
+                  <div class="app__main-chat chat"></div>
+
+                  <div class="app__main-control">
+                     <div class="app__main-control-title">How can i help you?</div>
+                     <div class="app__main-control-panel">
+                        <textarea id="autoResize" name="question" rows="1" placeholder="Ask anything..."></textarea>
+                        <div class="app__main-control-elements">
+                           <div class="app__main-control-files with-tips">
+                              <label>
+                                 <input type="file" disabled>
+                                 <img src="img/icons/plus.svg" width="20" height="20" alt="add file">
+                              </label>
+                              <div class="tips-item">
+                                 Pro only <img src="img/icons/lighthing.svg" width="10" height="16" alt="lighthing">
+                              </div>
+                           </div>
+                           <button type="button" class="app__main-control-send" style="display: none;">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                 viewBox="0 0 16 16">
+                                 <path fill-rule="evenodd"
+                                    d="M8 12a.5.5 0 0 0 .5-.5V5.707l2.146 2.147a.5.5 0 0 0 .708-.708l-3-3a.5.5 0 0 0-.708 0l-3 3a.5.5 0 1 0 .708.708L7.5 5.707V11.5a.5.5 0 0 0 .5.5" />
+                              </svg>
+                           </button>
+                           <div class="app__main-control-speach with-tips">
+                              <button type="button" disabled>
+                                 <img src="img/icons/microphone.svg" width="20" height="20" alt="Speach">
+                              </button>
+                              <div class="tips-item">
+                                 Pro only <img src="img/icons/lighthing.svg" width="10" height="16" alt="lighthing">
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <button type="button" class="app__main-upgrade">
+                     Upgrade PRO
+                     <img src="img/icons/lighthing.svg" width="10" height="16" alt="lighthing">
+                  </button>
+                  <div class="app__main-version">
+                     ChatGPT 4.1
+                  </div>
+                  <div class="app__main-blur"></div>
+               </div>
+            </div>
+         </div>
+      </main>
+      <div class="popup login-popup" data-popup="login-popup">
+   <div class="popup__body login-popup__body">
+      <div class="login-popup__icon">
+         <img src="img/icons/enter.svg" width="18" height="18" alt="Enter icon">
+      </div>
+      <div class="popup__body-title">
+         Sign in <br>
+      </div>
+      <div class="popup__body-subtitle">
+         Log in to your personal account
+         with access to the demo platform
+      </div>
+      <form class="popup__body-form">
+         <div class="popup__body-form-area">
+            <input type="email" name="email" autocomplete="email" placeholder="E-mail *" required>
+         </div>
+         <div class="popup__body-form-area">
+            <input type="password" name="password" minlength="8" class="password-input" autocomplete="current-password"
+               placeholder="Password *" required>
+            <div class="password-eye">
+               <span class="password-eye-open">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye"
+                     viewBox="0 0 16 16">
+                     <path
+                        d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                     <path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                  </svg>
+               </span>
+               <span class="password-eye-close">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                     class="bi bi-eye-slash" viewBox="0 0 16 16">
+                     <path
+                        d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
+                     <path
+                        d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
+                     <path
+                        d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
+                  </svg>
+               </span>
+            </div>
+         </div>
+         <div class="popup__body-form-help">
+            <label>
+               <input type="checkbox" name="remember" checked>
+               <span></span>
+               Remember me
+            </label>
+            <a href="">Forget password?</a>
+         </div>
+         <button type="submit" class="btn-gradient">Get started</button>
+      </form>
+      <p class="popup__body-att">By continuing, you agree to our Privacy Policy.</p>
+      <div class="popup__body-close popup-close">
+         <img src="img/icons/x.svg" width="24" height="24" alt="Close icon">
+      </div>
+      <div class="popup__blur"></div>
+   </div>
+</div>
+
+
+
+<div class="popup registration-popup" data-popup="registration-popup">
+   <div class="popup__body registration-popup__body">
+      <div class="popup__aside">
+         <div class="popup__aside-title title">Create your <br> Account</div>
+         <div class="popup__aside-subtitle subtitle">Everything you need is already here.</div>
+         <div class="popup__aside-image">
+            <picture><source srcset="img/popup-img.webp" type="image/webp"><img src="img/popup-img.png" width="271" height="430" alt="background image"></picture>
+         </div>
+      </div>
+      <div class="popup__main">
+         <div class="popup__body-title">
+            Sign up
+         </div>
+         <form class="popup__body-form">
+            <div class="popup__body-form-area">
+               <input type="text" name="first_name" autocomplete="given-name" placeholder="First name *" required>
+            </div>
+            <div class="popup__body-form-area">
+               <input type="text" name="last_name" autocomplete="family-name" placeholder="Last name *" required>
+            </div>
+            <div class="popup__body-form-area">
+               <input type="email" name="email" autocomplete="email" placeholder="E-mail *" required>
+            </div>
+            <div class="popup__body-form-area">
+               <input type="text" name="telegram" placeholder="Telegram">
+            </div>
+            <div class="popup__body-form-area">
+               <input type="password" name="password" minlength="8" class="password-input" autocomplete="new-password"
+                  placeholder="Password *" aria-describedby="passwordHint" required>
+               <div class="password-eye">
+                  <span class="password-eye-open">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-eye" viewBox="0 0 16 16">
+                        <path
+                           d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8M1.173 8a13 13 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5s3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5s-3.879-1.168-5.168-2.457A13 13 0 0 1 1.172 8z" />
+                        <path
+                           d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5M4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0" />
+                     </svg>
+                  </span>
+                  <span class="password-eye-close">
+                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-eye-slash" viewBox="0 0 16 16">
+                        <path
+                           d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7 7 0 0 0-2.79.588l.77.771A6 6 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13 13 0 0 1 14.828 8q-.086.13-.195.288c-.335.48-.83 1.12-1.465 1.755q-.247.248-.517.486z" />
+                        <path
+                           d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829" />
+                        <path
+                           d="M3.35 5.47q-.27.24-.518.487A13 13 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7 7 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12z" />
+                     </svg>
+                  </span>
+               </div>
+            </div>
+            <div id="passwordHint" class="popup__body-password-att">(min. 8 characters: A–Z, a–z, 0–9, symbols (!@#$%))
+            </div>
+            <button type="submit" class="btn-gradient">Get started</button>
+         </form>
+         <p class="popup__body-att">By continuing, you agree to our Privacy Policy.</p>
+         <div class="popup__blur"></div>
+      </div>
+      <div class="popup__body-close popup-close">
+         <img src="img/icons/x.svg" width="24" height="24" alt="Close icon">
+      </div>
+   </div>
+</div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250616130207"></script>
+   <script src="js/app.js?_v=20250616130207"></script>
+</body>
+
+</html>
