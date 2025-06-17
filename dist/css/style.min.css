@@ -2647,11 +2647,11 @@ APP
     right: 0;
     width: 500px;
     height: 500px;
-    -webkit-filter: blur(200px);
-    -moz-filter: blur(200px);
-    -o-filter: blur(200px);
-    -ms-filter: blur(200px);
-    filter: blur(200px);
+    -webkit-filter: blur(150px);
+    -moz-filter: blur(150px);
+    -o-filter: blur(150px);
+    -ms-filter: blur(150px);
+    filter: blur(150px);
   }
 }
 .app__main-control {
