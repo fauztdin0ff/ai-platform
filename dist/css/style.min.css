@@ -2628,6 +2628,7 @@ APP
   filter: blur(400px);
   background: linear-gradient(131.19deg, rgb(248, 94, 118) 3.025%, rgb(163, 36, 176) 22.986%, rgb(120, 7, 205) 45.185%, rgb(81, 79, 216) 72.222%, rgb(43, 174, 223) 100.153%);
   opacity: 0.6;
+  z-index: 2;
 }
 @media (max-width: 980px) {
   .app__main-blur {
