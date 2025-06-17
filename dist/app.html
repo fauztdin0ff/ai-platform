@@ -6,8 +6,8 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta name="msapplication-TileColor" content="#05010d">
    <meta name="theme-color" content="#05010d">
-   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-   <link rel="stylesheet" href="css/style.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css?_v=20250617231618" />
+   <link rel="stylesheet" href="css/style.min.css?_v=20250617231618">
    <title>Главная</title>
 </head>
 
@@ -43,37 +43,37 @@
                               </a>
                            </li>
                            <li>
-                              <a href="" class="app__aside-ai-link">
+                              <a href="" class="app__aside-ai-link open-popup" data-popup="unlock-popup">
                                  <img src="img/ai-logos/claude.svg" width="20" height="20" alt="Claude logo">
                                  <span>Claude</span>
                               </a>
                            </li>
                            <li>
-                              <a href="" class="app__aside-ai-link">
+                              <a href="" class="app__aside-ai-link open-popup" data-popup="unlock-popup">
                                  <img src="img/ai-logos/Gemini.svg" width="20" height="20" alt="Gemini logo">
                                  <span>Gemini</span>
                               </a>
                            </li>
                            <li>
-                              <a href="" class="app__aside-ai-link">
+                              <a href="" class="app__aside-ai-link open-popup" data-popup="unlock-popup">
                                  <img src="img/ai-logos/Meta.svg" width="20" height="20" alt="LLaMA logo">
                                  <span>LLaMA</span>
                               </a>
                            </li>
                            <li>
-                              <a href="" class="app__aside-ai-link">
+                              <a href="" class="app__aside-ai-link open-popup" data-popup="unlock-popup">
                                  <img src="img/ai-logos/ChatGPT.svg" width="20" height="20" alt="DALL·E logo">
                                  <span>DALL·E</span>
                               </a>
                            </li>
                            <li>
-                              <a href="" class="app__aside-ai-link">
+                              <a href="" class="app__aside-ai-link open-popup" data-popup="unlock-popup">
                                  <img src="img/ai-logos/DeepSeek.svg" width="20" height="20" alt="DeepSeek logo">
                                  <span>DeepSeek</span>
                               </a>
                            </li>
                            <li>
-                              <a href="" class="app__aside-ai-link">
+                              <a href="" class="app__aside-ai-link open-popup" data-popup="unlock-popup">
                                  <img src="img/ai-logos/Midjourney.svg" width="20" height="20" alt="Midjourney logo">
                                  <span>Midjourney</span>
                               </a>
@@ -104,9 +104,74 @@
 
                </div>
 
-               <div class="app__main">
-                  <div class="app__main-chat chat"></div>
+               <div class="app__main app__main-with-chat">
+                  <div class="app__main-chat chat">
+                     <div class="chat__container">
+                        <div class="chat__client-message">
+                           <div class="chat__client-message-text">Generate the quiz questions</div>
+                        </div>
+                        <div class="chat__ai-message">
+                           <p>
+                              Of course! Here are 15 quiz questions, divided by difficulty levels and topics.
+                              If you want, I can adapt it to a specific topic (for example, cinema, science, music,
+                              etc.).
+                           </p>
 
+                           <p>
+                              Easy level
+                              What color is obtained by mixing blue and yellow?How many days are there in a week?Who
+                              wrote
+                              the fairy tale
+                              "Kolobok"?Which planet is closest to the Sun?In which ocean is the Bermuda Triangle
+                              located?
+                           </p>
+
+                           <p>Average level</p>
+
+                           <p>How many continents are there on Earth?</p>
+
+                        </div>
+                        <div class="chat__client-message">
+                           <div class="chat__client-message-text">Generate the quiz questions</div>
+                        </div>
+                        <div class="chat__ai-message">
+                           <p>
+                              Of course! Here are 15 quiz questions, divided by difficulty levels and topics.
+                              If you want, I can adapt it to a specific topic (for example, cinema, science, music,
+                              etc.).
+                           </p>
+
+                           <p>
+                              Easy level
+                              What color is obtained by mixing blue and yellow?How many days are there in a week?Who
+                              wrote
+                              the fairy tale
+                              "Kolobok"?Which planet is closest to the Sun?In which ocean is the Bermuda Triangle
+                              located?
+                           </p>
+
+                           <p>Average level</p>
+
+                           <p>How many continents are there on Earth?</p>
+
+                        </div>
+                        <div class="chat__client-message">
+                           <div class="chat__client-message-text">Lorem ipsum, dolor sit amet consectetur adipisicing
+                              elit. Corporis dolorum obcaecati debitis illum facere earum.</div>
+                        </div>
+                        <div class="chat__ai-message">
+                           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet, optio placeat. Quisquam
+                              reiciendis molestias perspiciatis error, iste praesentium officiis esse ex cupiditate,
+                              voluptate alias commodi saepe enim in magni dolorum!</p>
+                           <p>Qui quibusdam odio aliquam! A, perferendis quaerat! Nostrum dolor qui beatae quibusdam
+                              illo, impedit ipsa magnam minima distinctio ad officiis nisi sequi quia aut modi debitis
+                              dolore incidunt quasi ullam.</p>
+                        </div>
+                     </div>
+                     <div class="chat__scroller">
+                        <img src="img/icons/chevron.svg" width="12" height="6" alt="">
+                     </div>
+                  </div>
                   <div class="app__main-control">
                      <div class="app__main-control-title">How can i help you?</div>
                      <div class="app__main-control-panel">
@@ -218,7 +283,7 @@
          <div class="popup__aside-title title">Create your <br> Account</div>
          <div class="popup__aside-subtitle subtitle">Everything you need is already here.</div>
          <div class="popup__aside-image">
-            <img src="img/popup-img.png" width="271" height="430" alt="background image">
+            <picture><source srcset="img/popup-img.webp" type="image/webp"><img src="img/popup-img.png" width="271" height="430" alt="background image"></picture>
          </div>
       </div>
       <div class="popup__main">
@@ -276,9 +341,53 @@
       </div>
    </div>
 </div>
+
+
+<div class="popup unlock-popup" data-popup="unlock-popup">
+   <div class="popup__body unlock-popup__body">
+      <div class="unlock-popup__title">
+         Unlock <span>PRO <img src="img/icons/vector.svg" width="14" height="22" alt="icon"></span> <br>
+         features and content
+      </div>
+      <div class="unlock-popup__advantages">
+         <div class="unlock-popup__advantage">
+            <div class="unlock-popup__advantage-icon">
+               <img src="img/icons/stars.svg" width="14" height="14" alt="start icon">
+            </div>
+            <div class="unlock-popup__advantage-text">All tools are unlimited</div>
+         </div>
+         <div class="unlock-popup__advantage">
+            <div class="unlock-popup__advantage-icon">
+               <img src="img/icons/clock.svg" width="14" height="14" alt="start icon">
+            </div>
+            <div class="unlock-popup__advantage-text">Priority in the queue</div>
+         </div>
+         <div class="unlock-popup__advantage">
+            <div class="unlock-popup__advantage-icon">
+               <img src="img/icons/download.svg" width="14" height="14" alt="start icon">
+            </div>
+            <div class="unlock-popup__advantage-text">Unlimited downloads</div>
+         </div>
+         <div class="unlock-popup__advantage">
+            <div class="unlock-popup__advantage-icon">
+               <img src="img/icons/window.svg" width="14" height="14" alt="start icon">
+            </div>
+            <div class="unlock-popup__advantage-text">All in one window</div>
+         </div>
+      </div>
+      <div class="unlock-popup__price">
+         <p class="unlock-popup__price-old"><del>$ 2500</del></p>
+         <p class="unlock-popup__price-actual"><span>$ 89</span>/year</p>
+      </div>
+      <div class="unlock-popup__buttons">
+         <a href="" class="btn-grey">Get access</a>
+         <button type="button" class="popup-close">Maybe later</button>
+      </div>
    </div>
-   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-   <script src="js/app.js"></script>
+</div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js?_v=20250617231618"></script>
+   <script src="js/app.js?_v=20250617231618"></script>
 </body>
 
 </html>

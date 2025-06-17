@@ -224,7 +224,8 @@ document.addEventListener("DOMContentLoaded", () => {
    const popups = document.querySelectorAll(".popup");
 
    openButtons.forEach(button => {
-      button.addEventListener("click", () => {
+      button.addEventListener("click", (e) => {
+         e.preventDefault();
          const popupName = button.getAttribute("data-popup");
          const targetPopup = document.querySelector(`.popup[data-popup="${popupName}"]`);
 
@@ -381,6 +382,85 @@ document.addEventListener('DOMContentLoaded', () => {
    });
 });
 
+/*------------------------------
+Chat scroller
+---------------------------*/
+document.addEventListener('DOMContentLoaded', () => {
+   const chatContainer = document.querySelector('.chat');
+   const scrollerBtn = document.querySelector('.chat__scroller');
+
+   if (!chatContainer || !scrollerBtn) return;
+
+   const showScrollerThreshold = 200;
+
+   function updateScrollerVisibility() {
+      const scrollDiff = chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight;
+      if (scrollDiff > showScrollerThreshold) {
+         scrollerBtn.classList.add('visible');
+      } else {
+         scrollerBtn.classList.remove('visible');
+      }
+   }
+
+   scrollerBtn.addEventListener('click', () => {
+      chatContainer.scrollTo({
+         top: chatContainer.scrollHeight,
+         behavior: 'smooth',
+      });
+   });
+
+   chatContainer.addEventListener('scroll', updateScrollerVisibility);
+
+   const observer = new MutationObserver(() => {
+      updateScrollerVisibility();
+   });
+
+   observer.observe(chatContainer, { childList: true, subtree: true });
+});
+
+
+/*------------------------------
+Panel
+---------------------------*/
+document.addEventListener('DOMContentLoaded', () => {
+   const appMain = document.querySelector('.app__main');
+   const chatContainer = document.querySelector('.chat__container');
+
+   if (!appMain || !chatContainer) return;
+
+   const checkMessages = () => {
+      const hasMessages = chatContainer.querySelector('.chat__client-message, .chat__ai-message');
+
+      if (hasMessages) {
+         appMain.classList.add('app__main-with-chat');
+      } else {
+         appMain.classList.remove('app__main-with-chat');
+      }
+   };
+
+   checkMessages();
+   const observer = new MutationObserver(checkMessages);
+   observer.observe(chatContainer, { childList: true, subtree: true });
+});
+
+
+/*------------------------------
+Focused panel
+---------------------------*/
+document.addEventListener('DOMContentLoaded', () => {
+   const textarea = document.getElementById('autoResize');
+   const controlPanel = document.querySelector('.app__main-control-panel');
+
+   if (textarea && controlPanel) {
+      textarea.addEventListener('focus', () => {
+         controlPanel.classList.add('focused');
+      });
+
+      textarea.addEventListener('blur', () => {
+         controlPanel.classList.remove('focused');
+      });
+   }
+});
 
 })();
 
