@@ -311,7 +311,6 @@ function handleTips() {
       const tip = item.querySelector('.tips-item');
 
       if (window.innerWidth < 1023) {
-         // Удаляем предыдущие события
          item.onmouseenter = null;
          item.onmouseleave = null;
 
@@ -352,17 +351,14 @@ document.addEventListener('DOMContentLoaded', () => {
    const closeBtn = document.querySelector('.app__aside-body-close');
    const body = document.body;
 
-   // Проверка, есть ли нужные элементы
    if (!toggleBtn || !asideBody || !body) return;
 
-   // Открыть меню
    toggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       asideBody.classList.add('opened');
       body.classList.add('blocked');
    });
 
-   // Закрыть меню (по кнопке), если кнопка есть
    if (closeBtn) {
       closeBtn.addEventListener('click', () => {
          asideBody.classList.remove('opened');
@@ -370,7 +366,6 @@ document.addEventListener('DOMContentLoaded', () => {
       });
    }
 
-   // Закрыть меню (по клику вне блока)
    document.addEventListener('click', (e) => {
       const isOpened = asideBody.classList.contains('opened');
       const clickedOutside = !asideBody.contains(e.target) && !toggleBtn.contains(e.target);
@@ -382,84 +377,314 @@ document.addEventListener('DOMContentLoaded', () => {
    });
 });
 
-/*------------------------------
-Chat scroller
----------------------------*/
 document.addEventListener('DOMContentLoaded', () => {
+   /* ------------------------------
+      Elements
+   ------------------------------ */
    const chatContainer = document.querySelector('.chat');
+   const chatInner = document.querySelector('.chat__container');
    const scrollerBtn = document.querySelector('.chat__scroller');
-
-   if (!chatContainer || !scrollerBtn) return;
-
-   const showScrollerThreshold = 200;
-
-   function updateScrollerVisibility() {
-      const scrollDiff = chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight;
-      if (scrollDiff > showScrollerThreshold) {
-         scrollerBtn.classList.add('visible');
-      } else {
-         scrollerBtn.classList.remove('visible');
-      }
-   }
-
-   scrollerBtn.addEventListener('click', () => {
-      chatContainer.scrollTo({
-         top: chatContainer.scrollHeight,
-         behavior: 'smooth',
-      });
-   });
-
-   chatContainer.addEventListener('scroll', updateScrollerVisibility);
-
-   const observer = new MutationObserver(() => {
-      updateScrollerVisibility();
-   });
-
-   observer.observe(chatContainer, { childList: true, subtree: true });
-});
-
-
-/*------------------------------
-Panel
----------------------------*/
-document.addEventListener('DOMContentLoaded', () => {
    const appMain = document.querySelector('.app__main');
-   const chatContainer = document.querySelector('.chat__container');
-
-   if (!appMain || !chatContainer) return;
-
-   const checkMessages = () => {
-      const hasMessages = chatContainer.querySelector('.chat__client-message, .chat__ai-message');
-
-      if (hasMessages) {
-         appMain.classList.add('app__main-with-chat');
-      } else {
-         appMain.classList.remove('app__main-with-chat');
-      }
-   };
-
-   checkMessages();
-   const observer = new MutationObserver(checkMessages);
-   observer.observe(chatContainer, { childList: true, subtree: true });
-});
-
-
-/*------------------------------
-Focused panel
----------------------------*/
-document.addEventListener('DOMContentLoaded', () => {
    const textarea = document.getElementById('autoResize');
    const controlPanel = document.querySelector('.app__main-control-panel');
 
+   /* ------------------------------
+      Прокрутка чата вниз по умолчанию
+   ------------------------------ */
+   if (chatContainer) {
+      chatContainer.scrollTop = chatContainer.scrollHeight;
+   }
+
+   /* ------------------------------
+      Кнопка прокрутки вниз
+   ------------------------------ */
+   if (chatContainer && scrollerBtn) {
+      const showScrollerThreshold = 200;
+
+      const updateScrollerVisibility = () => {
+         const scrollDiff = chatContainer.scrollHeight - chatContainer.scrollTop - chatContainer.clientHeight;
+         if (scrollDiff > showScrollerThreshold) {
+            scrollerBtn.classList.add('visible');
+         } else {
+            scrollerBtn.classList.remove('visible');
+         }
+      };
+
+      scrollerBtn.addEventListener('click', () => {
+         chatContainer.scrollTo({
+            top: chatContainer.scrollHeight,
+            behavior: 'smooth',
+         });
+      });
+
+      chatContainer.addEventListener('scroll', updateScrollerVisibility);
+
+      const scrollObserver = new MutationObserver(updateScrollerVisibility);
+      scrollObserver.observe(chatContainer, { childList: true, subtree: true });
+   }
+
+   /* ------------------------------
+      Проверка наличия сообщений
+   ------------------------------ */
+   if (appMain && chatInner) {
+      const checkMessages = () => {
+         const hasMessages = chatInner.querySelector('.chat__client-message, .chat__ai-message');
+         appMain.classList.toggle('app__main-with-chat', !!hasMessages);
+      };
+
+      checkMessages();
+
+      const messageObserver = new MutationObserver(checkMessages);
+      messageObserver.observe(chatInner, { childList: true, subtree: true });
+   }
+
+   /* ------------------------------
+      Фокус на textarea
+   ------------------------------ */
    if (textarea && controlPanel) {
       textarea.addEventListener('focus', () => {
          controlPanel.classList.add('focused');
       });
 
       textarea.addEventListener('blur', () => {
-         controlPanel.classList.remove('focused');
+         if (textarea.value.trim() === '') {
+            controlPanel.classList.remove('focused');
+         }
       });
    }
+});
+
+
+
+/*------------------------------
+GSAP animations
+---------------------------*/
+document.addEventListener("DOMContentLoaded", () => {
+   // Проверка существования хотя бы одного элемента по селектору
+   const elementExists = (selector) =>
+      typeof selector === "string"
+         ? document.querySelector(selector) !== null
+         : !!selector;
+
+   // Lenis
+   const lenis = new Lenis({
+      smooth: true,
+      smoothTouch: false,
+      easing: (t) => 1 - Math.pow(1 - t, 3),
+   });
+
+   lenis.on('scroll', ScrollTrigger.update);
+
+   const raf = (time) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+   };
+   requestAnimationFrame(raf);
+
+   gsap.registerPlugin(ScrollTrigger);
+
+   // Плавное появление body
+   if (elementExists("body")) {
+      gsap.to("body", {
+         opacity: 1,
+         duration: 0.5,
+         ease: "linear"
+      });
+   }
+
+   // Заголовки
+   const titles = document.querySelectorAll(".anim-title");
+   if (titles.length) {
+      titles.forEach((title) => {
+         gsap.from(title, {
+            opacity: 0,
+            y: 40,
+            skewX: 10,
+            duration: 2,
+            ease: "power4.out",
+            scrollTrigger: {
+               trigger: title,
+               start: "top 85%",
+               toggleActions: "play none none none"
+            }
+         });
+      });
+   }
+
+   // Подзаголовки
+   const subtitles = document.querySelectorAll(".anim-subtitle");
+   if (subtitles.length) {
+      subtitles.forEach((subtitle) => {
+         gsap.from(subtitle, {
+            opacity: 0,
+            delay: 1,
+            duration: 2.5,
+            ease: "power1",
+            scrollTrigger: {
+               trigger: subtitle,
+               start: "top 95%",
+               toggleActions: "play none none none"
+            }
+         });
+      });
+   }
+
+   // .hero анимации
+   if (elementExists(".hero")) {
+      const heroUserImg = document.querySelectorAll(".hero__user img");
+      if (heroUserImg.length) {
+         gsap.from(heroUserImg, {
+            opacity: 0,
+            scale: 0.5,
+            x: 50,
+            duration: 1,
+            stagger: 0.1,
+            ease: 'power1',
+            scrollTrigger: {
+               trigger: ".hero",
+               start: "top 80%",
+               end: "top 10%",
+            }
+         });
+      }
+
+      if (elementExists(".hero__user-text")) {
+         gsap.from(".hero__user-text", {
+            opacity: 0,
+            scale: 0.5,
+            x: 50,
+            duration: 1,
+            ease: 'power1',
+         });
+      }
+
+      if (elementExists(".hero__screen")) {
+         gsap.from(".hero__screen", {
+            x: 150,
+            duration: 2,
+            ease: 'back.out(1)',
+         });
+      }
+   }
+
+   // interface__card
+   if (elementExists(".interface__cards")) {
+      gsap.from(".interface__card", {
+         xPercent: 20,
+         opacity: 0,
+         duration: 2,
+         ease: "back.out(2)",
+         stagger: 0.2,
+         scrollTrigger: {
+            trigger: ".interface__cards",
+            start: "top 85%",
+            once: true
+         }
+      });
+   }
+
+   // prices__cell
+   if (elementExists(".prices__table")) {
+      gsap.from(".prices__cell", {
+         opacity: 0,
+         duration: 1,
+         stagger: 0.1,
+         ease: 'power1',
+         scrollTrigger: {
+            trigger: ".prices__table",
+            start: "top 90%",
+         }
+      });
+   }
+
+   if (elementExists(".prices__table")) {
+      gsap.to(".prices__cell-sep", {
+         y: 140,
+         duration: 1,
+         ease: 'power1',
+         stagger: 0.1,
+         scrollTrigger: {
+            trigger: ".prices__table",
+            start: "top 40%",
+            scrub: true,
+         }
+      });
+   }
+
+   if (elementExists(".community__items")) {
+      gsap.from(".community__item", {
+         y: 40,
+         opacity: 0,
+         stagger: 0.2,
+         duration: 1,
+         ease: 'power1',
+         scrollTrigger: {
+            trigger: ".community__items",
+            start: "top 85%",
+         }
+      });
+   }
+
+
+   // offer__card
+   const offerItems = gsap.utils.toArray('.offer__card');
+
+   if (offerItems.length && elementExists('.offer__cards')) {
+      const isMobile = window.innerWidth <= 768;
+
+      if (isMobile) {
+         gsap.from(offerItems, {
+            xPercent: 20,
+            opacity: 0,
+            duration: 2,
+            ease: "back.out(2)",
+            stagger: 0.2,
+            scrollTrigger: {
+               trigger: ".offer__cards",
+               start: "top 85%",
+               once: true
+            }
+         });
+      } else {
+         gsap.from(offerItems, {
+            y: -50,
+            ease: "bounce.out",
+            stagger: 0.1,
+            duration: 2,
+            scrollTrigger: {
+               trigger: '.offer__cards',
+               start: "top 80%",
+               end: "bottom 20%",
+               toggleActions: "play none none none"
+            }
+         });
+      }
+   }
+
+
+   // request__card
+   if (elementExists('.request__body')) {
+      gsap.from(".request__card", {
+         x: 150,
+         duration: 2,
+         ease: 'back.out(1)',
+         scrollTrigger: {
+            trigger: '.request__body',
+            start: "top 80%",
+            toggleActions: "play none none none"
+         }
+      });
+   }
+
+   // Обновляем ScrollTrigger один раз после загрузки
+   window.addEventListener("load", () => {
+      ScrollTrigger.refresh();
+   });
+
+   // Обновляем при ресайзе
+   window.addEventListener("resize", () => {
+      ScrollTrigger.refresh();
+   });
 });
 
 })();
