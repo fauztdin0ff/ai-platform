@@ -598,18 +598,50 @@ document.addEventListener("DOMContentLoaded", () => {
    }
 
    if (elementExists(".prices__table")) {
-      gsap.to(".prices__cell-sep", {
-         y: 140,
-         duration: 1,
-         ease: 'power1',
-         stagger: 0.1,
-         scrollTrigger: {
-            trigger: ".prices__table",
-            start: "top 40%",
-            scrub: true,
+      ScrollTrigger.matchMedia({
+         // Desktop
+         "(min-width: 768px)": function () {
+            const cells = gsap.utils.toArray(".prices__cell-sep");
+
+            cells.forEach(cell => {
+               gsap.to(cell, {
+                  y: 145,
+                  backgroundColor: "rgb(195, 56, 210)",
+                  duration: 1,
+                  ease: 'power1.inOut',
+                  scrollTrigger: {
+                     trigger: cell,
+                     start: "top 60%",
+                     end: "top 15%",
+                     scrub: true,
+                  }
+               });
+            });
+         },
+
+         // Mobile
+         "(max-width: 767px)": function () {
+            const cells = gsap.utils.toArray(".prices__cell-sep");
+
+            cells.forEach(cell => {
+               gsap.to(cell, {
+                  y: '700%',
+                  backgroundColor: "rgb(195, 56, 210)",
+                  duration: 1,
+                  ease: 'power1.inOut',
+                  scrollTrigger: {
+                     trigger: cell,
+                     start: "top 60%",
+                     end: "top 15%",
+                     scrub: true,
+                  }
+               });
+            });
          }
       });
    }
+
+
 
    if (elementExists(".community__items")) {
       gsap.from(".community__item", {
